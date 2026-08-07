@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SalonApp - Barber Appointment Booking App</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+  <!-- font awesome icons --> 
+  <link rel="stylesheet" href="css/font-awesome.css"> 
+</head>
+<body>
+<script src="js/main.js"></script>
+<!-- Sticky Glassmorphism Header -->
+<header class="glass-effect">
+<div class="logo">
+    <img src="img/logo_image.png"
+         class="logo-img"
+         alt="SalonApp">
+    <span class="logo-text">
+        SalonApp
+    </span>
+</div>
+<!-- Mobile/Tablet Hamburger  -->
+<button
+
+class="hamburger-btn"
+
+id="hamburgerBtn"
+
+aria-label="Navigation Menu"
+
+aria-expanded="false">
+
+<i class="fas fa-bars"></i>
+</button>
+
+<nav id="desktopNav">
+    <a href="#home" class="active">Home</a>
+    <a href="#about">About</a>
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#salon">Salons</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#contaact">Contact</a>
+</nav>
+
+<nav id="navMenu">
+<div class="drawer-header">
+    <h3>Menu</h3>
+    <button id="closeMenu" class="close-menu"><i class="fas fa-add"></i></button>
+</div>
+<a href="#home" class="active">
+    <i class="fas fa-home"></i>
+    Home
+</a>
+
+<a href="#about">
+    <i class="fas fa-user"></i>
+About
+</a>
+
+<a href="#features">
+    <i class="fas fa-star"></i>
+Features
+</a>
+
+<a href="#pricing">
+    <i class="fas fa-tag"></i>
+Pricing
+</a>
+
+<a href="#salons">
+    <i class="fas fa-store"></i>
+Salons
+</a>
+
+<a href="#testimonials">
+    <i class="fas fa-comment"></i>
+Testimonials
+</a>
+
+<a href="#contact">
+    <i class="fas fa-phone"></i>
+Contact
+</a>
+
+<hr>
+
+<a href="#download" class="mobile-only">
+<i class="fas fa-download"></i>
+
+Download App
+
+</a>
+
+<a href="#register" class="mobile-only">
+
+<i class="fas fa-store"></i>
+
+Register Your Salon
+
+</a>
+
+</nav>
+
+<div class="header-right">
+
+<button class="btn-admin">
+
+<i class="fas fa-lock"></i>
+
+<span>
+
+Admin Login
+
+</span>
+
+</button>
+
+<div class="lang-selector">
+
+<i class="fas fa-globe"></i>
+
+<span>
+
+EN
+
+</span>
+
+<i class="fas fa-arrow-down"></i>
+
+</div>
+
+<div
+
+class="theme-toggle"
+
+id="themeToggle">
+
+<i class="fas fa-sun active"></i>
+
+<i class="fas fa-moon"></i>
+
+</div>
+
+<button
+
+class="btn-primary header-download">
+
+<i class="fas fa-download"></i>
+
+Download App
+
+</button>
+
+
+
+</div>
+
+</header>
+<div id="menuOverlay" class="menu-overlay"></div>
+<!-- Main Hero Section -->
+<main class="hero-container">
+<!-- Left Hero Content -->
+<div class="hero-left">
+<div class="badge">
+<i class="fas fa-star"></i> India's Most Trusted Salon Booking App
+</div>
+<h1 class="hero-title">
+« Barber Appointment<br>
+<span class="highlight">Booking App »</span>
+</h1>
+<p class="hero-description">
+This SalonApp connects customers and barbers on a single platform. Customers can book salon appointments by selecting their preferred barber and available time slots. Barbers can manage bookings, schedule appointments, and provide services efficiently.
+</p>
+<!-- Primary Action Buttons -->
+<div class="action-buttons">
+<button class="btn-purple-lg">
+<i class="fas fa-download"></i>
+<div>
+<strong>Download App</strong>
+<span>Available on Android & iOS</span>
+</div>
+</button>
+<button class="btn-outline-lg">
+<i class="fas fa-store"></i>
+<div>
+<strong>Register Your Salon</strong>
+<span>Grow Your Business</span>
+</div>
+</button>
+<!-- Watch Demo Pointer -->
+<div class="watch-demo">
+<span class="handwritten-text">Watch Demo</span>
+<div class="arrow-svg">
+<svg width="40" height="30" viewBox="0 0 50 40">
+<path d="M 10,5 Q 35,10 25,30" fill="none" stroke="#3a3a3c" stroke-
+width="2" marker-end="url(#arrowhead)"/>
+<defs>
+<marker id="arrowhead" markerWidth="6" markerHeight="6" refX="3"
+refY="3" orient="auto">
+<polygon points="0 0, 6 3, 0 6" fill="#3a3a3c" />
+</marker>
+</defs>
+</svg>
+</div>
+<button class="btn-play" id="playDemoBtn">
+<i class="fas fa-play"></i>
+</button>
+</div>
+</div>
+<!-- Store Badges & QR Code Image -->
+<div class="download-section">
+<div class="store-buttons">
+<a href="#" class="store-badge">
+<img src="img/google-play.png" alt="Get it on Google Play">
+</a>
+<!-- <a href="#" class="store-badge">
+<img src="img/app-store.png" alt="Download on the App Store">
+</a> -->
+</div>
+<div class="qr-code-box">
+<div class="qr-code-img-wrapper">
+<img src="img/qr.png" alt="QR Code" class="qr-img">
+</div>
+<p>Scan QR Code<br>to Download App</p>
+</div>
+</div>
+</div>
+<!-- Right Hero Content: Mobile Screenshot with Continuous Circular Ripple Rings
+-->
+<div class="hero-right">
+<div class="mobile-wrapper">
+<!-- Circular Animated Pulse Rings Behind Screenshot -->
+
+<img src="img/mobile.png" alt="SalonApp Mobile Screenshot"
+class="mobile-img">
+<div class="orbit-ring">
+    <div class="orbit-dot"></div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Sticky Action Icons -->
+<aside class="right-floating-menu">
+<div class="float-group">
+<button class="float-btn demo" id="floatPlayDemoBtn" title="Watch Demo">
+<i class="fas fa-play"></i>
+</button>
+</div>
+<div class="float-group">
+<a href="https://wa.me/" target="_blank" class="float-btn whatsapp"
+title="WhatsApp">
+<i class="fas fa-comment"></i>
+</a>
+</div>
+<div class="float-group">
+<a href="mailto:support@salonapp.com" class="float-btn email" title="Email Us">
+<i class="fas fa-envelope"></i>
+</a>
+</div>
+</aside>
+<!-- Bottom Stats Dashboard Bar -->
+<section class="stats-bar">
+<div class="stat-item rating-item">
+<div class="avatars">
+<img src="img/1.jpg" alt="User 1">
+<img src="img/2.jpg" alt="User 2">
+<img src="img/3.jpg" alt="User 3">
+</div>
+<div class="rating-details">
+<div class="stars">
+★★★★★ <strong>4.9/5</strong>
+</div>
+<span>25K+ Customers</span>
+</div>
+</div>
+<div class="stat-divider"></div>
+<div class="stat-item">
+<div class="stat-icon purple-bg"><i class="fas fa-store"></i></div>
+<div>
+<h3>5000+</h3>
+<p>Partner Salons</p>
+</div>
+</div>
+<div class="stat-divider"></div>
+<div class="notch-space">
+    <div class="scroll-notch">
+    <div class="scroll-down-wrapper">
+        <div class="scroll-circle"><i class="fas fa-arrow-down"></i></div>
+    </div>
+</div>
+</div>
+<div class="stat-item">
+<div class="stat-icon pink-bg"><i class="fa fa-calendar-check"></i></div>
+<div>
+<h3>10L+</h3>
+<p>Appointments Booked</p>
+</div>
+</div>
+<div class="stat-divider"></div>
+<div class="stat-item">
+<div class="stat-icon green-bg"><i class="fas fa-city"></i></div>
+<div>
+<h3>20+</h3>
+<p>Cities</p>
+</div>
+</div>
+<div class="stat-divider"></div>
+<div class="stat-item">
+<div class="stat-icon blue-bg"><i class="fas fa-download"></i></div>
+<div>
+<h3>100K+</h3>
+<p>App Downloads</p>
+</div>
+</div>
+</section>
+
+</body>
+</html>
