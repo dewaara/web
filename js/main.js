@@ -61,167 +61,307 @@ behavior: 'smooth'
    RESPONSIVE NAVIGATION MENU
 ====================================== */
 
-const menuBtn = document.getElementById("hamburgerBtn");
-const navMenu = document.getElementById("navMenu");
+/* ======================================
+   RESPONSIVE NAVIGATION
 
-if(menuBtn && navMenu){
+   Desktop  : >1024px
+   Tablet   : 641-1024px
+   Mobile   : <=640px
+====================================== */
 
-menuBtn.addEventListener("click",()=>{
+const menuBtn =
+    document.getElementById("hamburgerBtn");
 
-navMenu.classList.toggle("active");
+const navMenu =
+    document.getElementById("navMenu");
 
-menuBtn.classList.toggle("active");
+const closeBtn =
+    document.getElementById("closeMenu");
 
-});
+const overlay =
+    document.getElementById("menuOverlay");
 
-}
 
-const menuItems=document.querySelectorAll("#navMenu a");
+const allNavLinks =
+    document.querySelectorAll(
+        "#desktopNav a, #navMenu a"
+    );
+    function openMenu() {
 
-menuItems.forEach(item=>{
+    if (!menuBtn || !navMenu || !overlay) {
+        return;
+    }
 
-item.addEventListener("click",()=>{
-
-navMenu.classList.remove("active");
-
-menuBtn.classList.remove("active");
-
-});
-
-});
-
-document.addEventListener("click",(event)=>{
-
-const insideMenu=navMenu.contains(event.target);
-
-const insideButton=menuBtn.contains(event.target);
-
-if(!insideMenu && !insideButton){
-
-navMenu.classList.remove("active");
-
-menuBtn.classList.remove("active");
-
-}
-
-});
-
-document.addEventListener("keydown",(event)=>{
-
-if(event.key==="Escape"){
-
-navMenu.classList.remove("active");
-
-menuBtn.classList.remove("active");
-
-}
-
-});
-
-menuItems.forEach(item=>{
-
-item.addEventListener("click",(event)=>{
-
-const id=item.getAttribute("href");
-
-if(id.startsWith("#")){
-
-event.preventDefault();
-
-const section=document.querySelector(id);
-
-if(section){
-
-section.scrollIntoView({
-
-behavior:"smooth",
-
-block:"start"
-
-});
-
-}
-
-}
-
-});
-
-});
-
-const sections=document.querySelectorAll("section");
-
-window.addEventListener("scroll",()=>{
-
-let current="";
-
-sections.forEach(section=>{
-
-const top=section.offsetTop-120;
-
-const height=section.offsetHeight;
-
-if(pageYOffset>=top){
-
-current=section.getAttribute("id");
-
-}
-
-});
-
-menuItems.forEach(link=>{
-
-link.classList.remove("active");
-
-if(link.getAttribute("href")==="#"+current){
-
-link.classList.add("active");
-
-}
-
-});
-
-});
-
-const header=document.querySelector("header");
-
-window.addEventListener("scroll",()=>{
-
-if(window.scrollY>30){
-
-header.classList.add("header-shadow");
-
-}else{
-
-header.classList.remove("header-shadow");
-
-}
-
-});
-
-const overlay=document.getElementById("menuOverlay");
-const closeBtn=document.getElementById("closeMenu");
-menuBtn.addEventListener("click",()=>{
     navMenu.classList.add("active");
+
     overlay.classList.add("active");
-});
 
-closeBtn.addEventListener("click",()=>{
+    menuBtn.classList.add("active");
+
+    menuBtn.setAttribute(
+        "aria-expanded",
+        "true"
+    );
+
+    document.body.classList.add(
+        "drawer-open"
+    );
+
+
+    const icon =
+        menuBtn.querySelector("i");
+
+    if (icon) {
+
+        icon.classList.replace(
+            "fa-bars",
+            "fa-xmark"
+        );
+
+    }
+}
+function closeMenu() {
+
+    if (!menuBtn || !navMenu || !overlay) {
+        return;
+    }
+
     navMenu.classList.remove("active");
-    overlay.classList.remove("active");
-});
 
-overlay.addEventListener("click",()=>{
-    navMenu.classList.remove("active");
     overlay.classList.remove("active");
-});
 
-menuItems.forEach(item=>{
-    item.addEventListener("click",()=>{
-        navMenu.classList.remove("active");
-        overlay.classList.remove("active");
-    });
+    menuBtn.classList.remove("active");
+
+    menuBtn.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+    document.body.classList.remove(
+        "drawer-open"
+    );
+
+
+    const icon =
+        menuBtn.querySelector("i");
+
+    if (icon) {
+
+        icon.classList.replace(
+            "fa-xmark",
+            "fa-bars"
+        );
+
+    }
+}
+if (menuBtn) {
+
+    menuBtn.addEventListener(
+        "click",
+        () => {
+
+            if (
+                navMenu.classList.contains(
+                    "active"
+                )
+            ) {
+
+                closeMenu();
+
+            } else {
+
+                openMenu();
+
+            }
+
+        }
+    );
+
+}
+if (closeBtn) {
+
+    closeBtn.addEventListener(
+        "click",
+        closeMenu
+    );
+
+}
+
+
+if (overlay) {
+
+    overlay.addEventListener(
+        "click",
+        closeMenu
+    );
+
+}
+document.addEventListener(
+    "keydown",
+    (event) => {
+
+        if (event.key === "Escape") {
+
+            closeMenu();
+
+        }
+
+    }
+);
+allNavLinks.forEach((link) => {
+
+    link.addEventListener(
+        "click",
+        (event) => {
+
+            const id =
+                link.getAttribute("href");
+
+
+            if (
+                !id ||
+                !id.startsWith("#")
+            ) {
+
+                return;
+
+            }
+
+
+            const section =
+                document.querySelector(id);
+
+
+            if (section) {
+
+                event.preventDefault();
+
+                section.scrollIntoView({
+
+                    behavior: "smooth",
+
+                    block: "start"
+
+                });
+
+            }
+
+
+            // Remove active from all links
+            allNavLinks.forEach(
+                (item) => {
+
+                    item.classList.remove(
+                        "active"
+                    );
+
+                }
+            );
+
+
+            // Make corresponding
+            // desktop + drawer links active
+            document
+                .querySelectorAll(
+                    `a[href="${id}"]`
+                )
+                .forEach(
+                    (item) => {
+
+                        item.classList.add(
+                            "active"
+                        );
+
+                    }
+                );
+
+
+            // Close drawer
+            if (
+                link.closest("#navMenu")
+            ) {
+
+                closeMenu();
+
+            }
+
+        }
+    );
+
 });
-const desktopNav = document.getElementById("desktopNav");
-const mobileDrawer = document.getElementById("")
+const sections =
+    document.querySelectorAll(
+        "main[id], section[id]"
+    );
+
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        let current = "";
+
+
+        sections.forEach(
+            (section) => {
+
+                if (
+                    window.scrollY >=
+                    section.offsetTop - 120
+                ) {
+
+                    current =
+                        section.id;
+
+                }
+
+            }
+        );
+
+
+        if (!current) {
+            return;
+        }
+
+
+        allNavLinks.forEach(
+            (link) => {
+
+                link.classList.toggle(
+
+                    "active",
+
+                    link.getAttribute(
+                        "href"
+                    ) === `#${current}`
+
+                );
+
+            }
+        );
+
+    }
+);
+const header =
+    document.querySelector("header");
+
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        if (header) {
+
+            header.classList.toggle(
+                "header-shadow",
+                window.scrollY > 30
+            );
+
+        }
+
+    }
+);
+
+
 // ending point
 });

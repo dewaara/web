@@ -21,147 +21,266 @@
         SalonApp
     </span>
 </div>
-<!-- Mobile/Tablet Hamburger  -->
-<button
 
-class="hamburger-btn"
+<nav id="desktopNav"
+         aria-label="Desktop Navigation">
 
-id="hamburgerBtn"
+        <a href="#home" class="active">
+            Home
+        </a>
 
-aria-label="Navigation Menu"
+        <a href="#about">
+            About
+        </a>
 
-aria-expanded="false">
+        <a href="#features">
+            Features
+        </a>
 
-<i class="fas fa-bars"></i>
-</button>
+        <a href="#pricing">
+            Pricing
+        </a>
 
-<nav id="desktopNav">
-    <a href="#home" class="active">Home</a>
-    <a href="#about">About</a>
-    <a href="#features">Features</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#salons">Salons</a>
-    <a href="#testimonials">Testimonials</a>
-    <a href="#contact">Contact</a>
-</nav>
+        <a href="#salons">
+            Salons
+        </a>
 
-<nav id="navMenu">
-<div class="drawer-header">
-    <h3>Menu</h3>
-    <button id="closeMenu" class="close-menu"><i class="fas fa-add"></i></button>
-</div>
-<a href="#home" class="active">
-    <i class="fas fa-home"></i>
-    Home
-</a>
+        <a href="#testimonials">
+            Testimonials
+        </a>
 
-<a href="#about">
-    <i class="fas fa-user"></i>
-About
-</a>
+        <a href="#contact">
+            Contact
+        </a>
 
-<a href="#features">
-    <i class="fas fa-star"></i>
-Features
-</a>
+    </nav>
 
-<a href="#pricing">
-    <i class="fas fa-tag"></i>
-Pricing
-</a>
+     <div class="header-right">
 
-<a href="#salons">
-    <i class="fas fa-store"></i>
-Salons
-</a>
+        <!-- Admin Login -->
+        <button class="btn-admin">
 
-<a href="#testimonials">
-    <i class="fas fa-comment"></i>
-Testimonials
-</a>
+            <i class="fas fa-lock"></i>
 
-<a href="#contact">
-    <i class="fas fa-phone"></i>
-Contact
-</a>
+            <span>
+                Admin Login
+            </span>
 
-<hr>
-
-<a href="#download" class="mobile-only">
-<i class="fas fa-download"></i>
-
-Download App
-
-</a>
-
-<a href="#register" class="mobile-only">
-
-<i class="fas fa-store"></i>
-
-Register Your Salon
-
-</a>
-
-</nav>
-
-<div class="header-right">
-
-<button class="btn-admin">
-
-<i class="fas fa-lock"></i>
-
-<span>
-
-Admin Login
-
-</span>
-
-</button>
-
-<div class="lang-selector">
-
-<i class="fas fa-globe"></i>
-
-<span>
-
-EN
-
-</span>
-
-<i class="fas fa-arrow-down"></i>
-
-</div>
-
-<div
-
-class="theme-toggle"
-
-id="themeToggle">
-
-<i class="fas fa-sun active"></i>
-
-<i class="fas fa-moon"></i>
-
-</div>
-
-<button
-
-class="btn-primary header-download">
-
-<i class="fas fa-download"></i>
-
-Download App
-
-</button>
+        </button>
 
 
+        <!-- Language -->
+        <div class="lang-selector">
 
-</div>
+            <i class="fas fa-globe"></i>
+
+            <span>
+                EN
+            </span>
+
+            <i class="fas fa-chevron-down"></i>
+
+        </div>
+
+
+        <!-- Theme -->
+        <div class="theme-toggle"
+             id="themeToggle">
+
+            <i class="fas fa-sun active"></i>
+
+            <i class="fas fa-moon"></i>
+
+        </div>
+
+
+        <!-- Download -->
+        <button class="btn-primary header-download">
+
+            <i class="fas fa-download"></i>
+
+            Download App
+
+        </button>
+
+
+        <!-- Hamburger
+             Tablet + Mobile only -->
+        <button class="hamburger-btn"
+                id="hamburgerBtn"
+                aria-label="Navigation Menu"
+                aria-controls="navMenu"
+                aria-expanded="false">
+
+            <i class="fas fa-bars"></i>
+
+        </button>
+
+    </div>
+
+<nav id="navMenu"
+         aria-label="Tablet and Mobile Navigation">
+
+
+        <!-- Drawer Header -->
+        <div class="drawer-header">
+
+            <h3>
+                Menu
+            </h3>
+
+            <button id="closeMenu"
+                    class="close-menu"
+                    aria-label="Close Navigation Menu">
+
+                <i class="fas fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+
+        <!-- Home -->
+        <a href="#home"
+           class="active">
+
+            <i class="fas fa-home"></i>
+
+            <span>
+                Home
+            </span>
+
+            <i class="fas fa-chevron-right menu-arrow"></i>
+
+        </a>
+
+
+        <!-- About -->
+        <a href="#about">
+
+            <i class="fas fa-user"></i>
+
+            <span>
+                About
+            </span>
+
+            <i class="fas fa-chevron-right menu-arrow"></i>
+
+        </a>
+
+
+        <!-- Features -->
+        <a href="#features">
+
+            <i class="fas fa-star"></i>
+
+            <span>
+                Features
+            </span>
+
+            <i class="fas fa-chevron-right menu-arrow"></i>
+
+        </a>
+
+
+        <!-- Pricing -->
+        <a href="#pricing">
+
+            <i class="fas fa-tag"></i>
+
+            <span>
+                Pricing
+            </span>
+
+            <i class="fas fa-chevron-right menu-arrow"></i>
+
+        </a>
+
+
+        <!-- Salons -->
+        <a href="#salons">
+
+            <i class="fas fa-store"></i>
+
+            <span>
+                Salons
+            </span>
+
+            <i class="fas fa-chevron-right menu-arrow"></i>
+
+        </a>
+
+
+        <!-- Testimonials -->
+        <a href="#testimonials">
+
+            <i class="fas fa-comment"></i>
+
+            <span>
+                Testimonials
+            </span>
+
+            <i class="fas fa-chevron-right menu-arrow"></i>
+
+        </a>
+
+
+        <!-- Contact -->
+        <a href="#contact">
+
+            <i class="fas fa-phone"></i>
+
+            <span>
+                Contact
+            </span>
+
+            <i class="fas fa-chevron-right menu-arrow"></i>
+
+        </a>
+
+
+        <hr>
+
+
+        <!-- Download -->
+        <a href="#download"
+           class="mobile-only">
+
+            <i class="fas fa-download"></i>
+
+            <span>
+                Download App
+            </span>
+
+            <i class="fas fa-chevron-right menu-arrow"></i>
+
+        </a>
+
+
+        <!-- Register -->
+        <a href="#register"
+           class="mobile-only">
+
+            <i class="fas fa-store"></i>
+
+            <span>
+                Register Your Salon
+            </span>
+
+            <i class="fas fa-chevron-right menu-arrow"></i>
+
+        </a>
+
+    </nav>
 
 </header>
-<div id="menuOverlay" class="menu-overlay"></div>
+
+<!-- Drawer Overlay -->
+<div id="menuOverlay"
+     class="menu-overlay">
+</div>
 <!-- Main Hero Section -->
-<main class="hero-container">
+<main id="home" class="hero-container">
 <!-- Left Hero Content -->
 <div class="hero-left">
 <div class="badge">
@@ -195,8 +314,7 @@ This SalonApp connects customers and barbers on a single platform. Customers can
 <span class="handwritten-text">Watch Demo</span>
 <div class="arrow-svg">
 <svg width="40" height="30" viewBox="0 0 50 40">
-<path d="M 10,5 Q 35,10 25,30" fill="none" stroke="#3a3a3c" stroke-
-width="2" marker-end="url(#arrowhead)"/>
+<path d="M 10,5 Q 35,10 25,30" fill="none" stroke="#3a3a3c" stroke-width="2" marker-end="url(#arrowhead)"/>
 <defs>
 <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="3"
 refY="3" orient="auto">
