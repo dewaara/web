@@ -1194,11 +1194,6 @@ padding: 16px;
 
     padding: 18px 22px;
 }
-
-/* Watch Demo is not required in mobile action-button area */
-.action-buttons .watch-demo {
-    display: none;
-}
 	/* ==========================================
    MOBILE FLOATING WATCH DEMO BUTTON
    ========================================== */
