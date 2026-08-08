@@ -1162,7 +1162,77 @@ padding: 16px;
 	.header-right {
         gap: 7px;
     }
+/* ==========================================
+   MOBILE ACTION BUTTONS
+   Both buttons same width + same height
+========================================== */
 
+.action-buttons {
+    width: 100%;
+    max-width: 400px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 16px;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.action-buttons .btn-purple-lg,
+.action-buttons .btn-outline-lg {
+    width: 100%;
+    height: 110px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+
+    padding: 18px 22px;
+}
+
+/* Watch Demo is not required in mobile action-button area */
+.action-buttons .watch-demo {
+    display: none;
+}
+	/* ==========================================
+   MOBILE FLOATING WATCH DEMO BUTTON
+   ========================================== */
+
+.action-buttons .watch-demo {
+    position: fixed;
+
+    right: 18px;
+    bottom: 20px;
+
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border-radius: 50%;
+
+    z-index: 997;
+
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.20);
+
+    font-size: 0;
+}
+
+/* Show only the play icon */
+.action-buttons .watch-demo i {
+    font-size: 20px;
+    margin: 0;
+}
     .lang-selector i:last-child {
         display: none;
     }
