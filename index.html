@@ -8,6 +8,189 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/font-awesome.css"> 
 </head>
+
+<!-- model cardss -->
+<div id="certificateModel" class="certificate-model">
+  <div class="certificate-model-content">
+    <div class="model-header">
+      <h3 id="pdfTitle" class="pdf-doc-title">Document Title</h3>
+      <div class="header-action">
+        <a 
+        id="downloadPdf"
+        class="download-btn"
+        href="#"
+        download>
+        <i class="fa fa-download"></i>
+          Download File
+        </a>
+
+      </div>
+      <span class="close-model" onclick="closeCertificate()">
+        &times;
+      </span>
+    </div>
+
+    <!-- <embed
+    id="pdfViewer"
+    type="application/pdf"
+    width="100%"
+    height="700px"> -->
+
+    <div class="pdf-viewport" id="pdfViewport">
+      <div class="pdf-canvas-wrapper" id="pdfCanvasWrapper">
+        <iframe id="pdfViewer" src="" frameborder="0"></iframe>
+      </div>
+      <div class="pdf-floating-controls">
+        <button type="button" onclick="zoomIn()" title="Zoom In"><i class="fas fa-plus"></i></button>
+        <button type="button" onclick="zoomOut()" title="Zoom Out"><i class="fas fa-minus"></i></button>
+        <button type="button" onclick="toggleFullscreen()" title="Fullscreen"><i class="fas fa-expand"></i></button>
+      </div>
+
+    </div>
+
+
+
+    </div>
+</div>
+  
+<script>
+  let currentZoom = 1;
+function openCertificate(file,title){
+    document.getElementById("certificateModel").classList.add("show");
+    document.getElementById("pdfTitle").innerHTML=title;
+    document.getElementById("pdfViewer").src=file + "#toolbar=0&navpannes=0&scrollbar=1";
+    document.getElementById("downloadPdf").href=file;
+    document.getElementById("pdfTitleinnerText") = title;
+
+    currentZoom = 1;
+    applyZoom();
+  }
+ function closeCertificate(){
+    document.getElementById("certificateModel").classList.remove("show");
+    document.getElementById("pdfViewer").src="";
+  }
+
+  function zoomIn() {
+    if (currentZoom < 2.0){
+        currentZoom += 0.15;
+        applyZoom();
+    }
+  }
+
+  function zoomOut() {
+    if (currentZoom > 0.6){
+        currentZoom -= 0.15;
+        applyZoom();
+    }
+  }
+
+  function applyZoom() {
+    const wrapper = document.getElementById("pdfCanvasWrapper");
+    wrapper.style.transform = `scale(${currentZoom})`;
+  }
+
+  function toggleFullscreen(){
+    const elem = document.getElementById("pdfViewport");
+    if (!document.fullscreenElement){
+        if(elem.requestFullscreen){
+            elem.requestFullscreen();
+        }
+    } else {
+        if(document.exitFullscreen){
+            document.exitFullscreen();
+        }
+    }
+  }
+
+  window.onclick = function(event){
+    var modal = this.document.getElementById("certificateModel");
+    if(event.target == modal){
+        closeCertificate();
+    }
+  };
+
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Escape"){
+        closeCertificate();
+    }
+  });
+</script>
+<!-- 
+<script>
+  // Watch Demo Trigger
+document.addEventListener("DOMContentLoaded", function () {
+const playDemoBtn = document.getElementById('playDemoBtn');
+const videoModal = document.getElementById('videoModal');
+const closeVideoBtn = document.getElementById('closeVideoBtn');
+const demoVideo = document.getElementById('demoVideo');
+
+if(!playDemoBtn || !videoModal || !closeVideoBtn || !demoVideo){
+    console.error("video modal element not found!");
+    return;
+}
+
+let lastFocusedElement = null;
+function openVideoModal(){
+    lastFocusedElement = document.activeElement;
+    videoModal.classList.add("is-open");
+    videoModal.setAttribute("aria-hidden",false);
+    document.body.style.overflow = "hidden";
+    demoVideo.muted = false;
+    demoVideo.volume = 1;
+    const playPromise = demoVideo.play();
+    if(playPromise !== undefined){
+        playPromise.catch(function(error){
+            console.warn("video playback could not start.",error);
+        });
+    }
+    closeVideoBtn.focus();
+}
+function closeVideoModal(){
+    if(!videoModal.classList.contains("is-open")){
+        return;
+    }
+    demoVideo.onpause();
+    demoVideo.currentTime = 0;
+    videoModal.classList.remove("is-open");
+    videoModal.setAttribute("aria-hidden","true");
+    document.body.style.overflow = "";
+    if(lastFocusedElement && typeof lastFocusedElement.focus === "function"){
+        lastFocusedElement.focus();
+    }
+}
+
+playDemoBtn.addEventListener("click", openVideoModal);
+closeVideoBtn.addEventListener("click",function (event){
+    event.preventDefault();
+    event.stopPropagation();
+    closeVideoModal();
+});
+
+videoModal.addEventListener("click", function (event) {
+        if (event.target === videoModal){
+            closeVideoModal();
+        }
+    });
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && videoModal.classList.contains("is-open")){
+        closeVideoModal();
+    }
+});  
+
+demoVideo.addEventListener("ended",function(){
+    demoVideo.currentTime = 0;
+});
+
+// floating play video
+const floatPlayDemoBtn = document.getElementById('floatPlayDemoBtn');
+if (floatPlayDemoBtn){
+    floatPlayDemoBtn.addEventListener("click", openVideoModal);
+}
+
+});
+</script> -->
+
+
 <body>
 
 <!-- Sticky Glassmorphism Header -->
@@ -124,10 +307,23 @@
             </defs>
           </svg>
         </div>
-        <button class="btn-play" id="playDemoBtn">
+        <button class="btn-play" type="button" id="playDemoBtn" aria-label="Play video">
           <i class="fas fa-play"></i>
         </button>
+
+        <div id="videoModal" class="video-modal" aria-hidden="true">
+          <div class="video-modal-content" role="dialog" aria-modal="true" aria-label="Demo video">
+            <button class="video-close" id="closeVideoBtn" aria-label="Close video">
+              &times;
+            </button>
+            <video id="demoVideo" controls playsinline preload="metadata">
+              <source src="pdf/video.mp4" type="video/mp4">Your browser does not support video.
+            </video>
+          </div>
+        </div>
+
       </div>
+
     </div>
 
     <!-- Store Badges & QR Code Image -->
@@ -229,6 +425,148 @@
     </div>
   </div>
 </section>
+
+<!-- end -->
+ <!-- ==========================================
+CERTIFICATES & DOCUMENTS SECTION
+========================================== -->
+<section id="certificates" class="cert-section">
+  <div class="cert-container">
+    
+    <!-- Left Featured Certificate Preview (Mobile/Tablet par order adjust hoga CSS se) -->
+    <div class="cert-featured-left">
+      <div class="featured-doc-frame">
+        <img id="featuredMainImg" src="img/copyright-cert.png" alt="Copyright Certificate" class="featured-doc-img">
+      </div>
+    </div>
+
+    <!-- Right Side Content & Document Cards -->
+    <div class="cert-content-right">
+      <div class="cert-header">
+        <h2 class="cert-title">Certificates & Documents</h2>
+        <p class="cert-description">
+          Explore SalonApp's official achievements, certifications, and project documents that showcase our innovation, technical excellence, and commitment to delivering a secure, reliable, and user-friendly salon booking platform.
+        </p>
+      </div>
+
+      <!-- 2x2 Grid for PDF Cards -->
+      <div class="doc-cards-grid">
+        
+        <!-- Card 1 -->
+        <div class="doc-card" onclick="openCertificate('pdf/licence_file.pdf','Play Store License Certificate')">
+          <div class="doc-thumb-wrapper">
+            <span class="pdf-tag">PDF</span>
+            <img src="img/licence2.gif" alt="Play Store License Certificate">
+            <div class="doc-overlay">
+              <button class="view-doc-btn">
+                <i class="fas fa-eye"></i>
+                <span>View Document</span>
+              </button>
+            </div>
+          </div>
+          <div class="doc-info">
+            <h4>Play Store License</h4>
+            <p>1 Page</p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="doc-card" onclick="openCertificate('pdf/sa_poster.pdf','App Download Poster')">
+          <div class="doc-thumb-wrapper">
+            <span class="pdf-tag">PDF</span>
+            <img src="img/download_tamplate1.gif" alt="App Download Poster">
+            <div class="doc-overlay">
+              <button class="view-doc-btn" type="button">
+                <i class="fas fa-eye"></i>
+                <span>View Document</span>
+              </button>
+            </div>
+          </div>
+          <div class="doc-info">
+            <h4>App Download Poster</h4>
+            <p>1 Page</p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="doc-card" onclick="openCertificate('pdf/app_concept.pdf','User Manual')">
+          <div class="doc-thumb-wrapper">
+            <span class="pdf-tag">PDF</span>
+            <img src="img/user_manual1.gif" alt="App Working Concept">
+            <div class="doc-overlay">
+              <button class="view-doc-btn" type="button">
+                <i class="fas fa-eye"></i>
+                <span>View Document</span>
+              </button>
+            </div>
+          </div>
+          <div class="doc-info">
+            <h4>App Working Concept</h4>
+            <p>18 Pages</p>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="doc-card" onclick="openCertificate('pdf/privacy_policy.pdf','Privacy & Policy')">
+          <div class="doc-thumb-wrapper">
+            <span class="pdf-tag">PDF</span>
+            <img src="img/privacy1.gif" alt="Project Report">
+            <div class="doc-overlay">
+              <button class="view-doc-btn" type="button">
+                <i class="fas fa-eye"></i>
+                <span>View Document</span>
+              </button>
+            </div>
+          </div>
+          <div class="doc-info">
+            <h4>Privacy & Policy</h4>
+            <p>35 Pages</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Upcoming Features Banner (Hero section ke style ke anusar constructed) -->
+      <div class="upcoming-features-box">
+        <h3 class="upcoming-title">Upcoming Features</h3>
+        <div class="features-flex">
+          <div class="feature-item">
+            <div class="stat-icon purple-bg"><i class="fas fa-brain"></i></div>
+            <span>AI Hairstyle Suggestions</span>
+          </div>
+          <div class="feature-item">
+            <div class="stat-icon pink-bg"><i class="fas fa-video"></i></div>
+            <span>Video Consultation</span>
+          </div>
+          <div class="feature-item">
+            <div class="stat-icon green-bg"><i class="fas fa-gift"></i></div>
+            <span>Loyalty Rewards</span>
+          </div>
+          <div class="feature-item">
+            <div class="stat-icon blue-bg"><i class="fas fa-stopwatch"></i></div>
+            <span>Smart Watch Notification</span>
+          </div>
+          <div class="feature-item">
+            <div class="stat-icon purple-bg"><i class="fas fa-shopping-cart"></i></div>
+            <span>Salon Product Marketplace</span>
+          </div>
+          <div class="feature-item">
+            <div class="stat-icon pink-bg"><i class="fas fa-globe"></i></div>
+            <span>Multiple Language Support[cite: 4]</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ==========================================
+DOCUMENT VIEWER DIALOG / MODAL (Pop-up)
+========================================== -->
+
+ <!-- end.. -->
 
 <script src="js/main.js"></script>
 </body>

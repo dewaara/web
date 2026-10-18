@@ -12,18 +12,45 @@ document.body.classList.toggle('dark-theme');
 }
 // Watch Demo Trigger
 const playDemoBtn = document.getElementById('playDemoBtn');
-if (playDemoBtn) {
+const videoModal = document.getElementById('videoModal');
+const closeVideoBtn = document.getElementById('closeVideoBtn');
+const demoDemo = document.getElementById('demoVideo');
+
 playDemoBtn.addEventListener('click', () => {
-alert('Play Demo Video');
+    videoModal.style.display = "flex";
+    demoDemo.currentTime = 0;
+    demoDemo.play().catch(error => {
+        console.error("Video playback failed:", error);
+    });
 });
+
+function closeVideo(){
+    demoDemo.onpause();
+    demoDemo.currentTime = 0;
+    videoModal.style.display = "none"
 }
+closeVideoBtn.addEventListener("click", closeVideo);
+videoModal.addEventListener('click', (event) => {
+        if (event.target === videoModal){
+            closeVideo();
+        }
+    });
+document.addEventListener("keydown",(event) => {
+    if (event.key === "Escape" && videoModal.style.display === "flex"){
+        closeVideo();
+    }
+});    
 
 // floating play video
 const floatPlayDemoBtn = document.getElementById('floatPlayDemoBtn');
 if (floatPlayDemoBtn){
     floatPlayDemoBtn.addEventListener('click', () => {
-        alert('Play Demo Video')
+    videoModal.style.display = "flex";
+    demoDemo.currentTime = 0;
+    demoDemo.play().catch(error => {
+        console.error("Video playback failed:", error);
     });
+});
 }
 
 // Scroll to Top
@@ -362,6 +389,99 @@ window.addEventListener(
     }
 );
 
+/* ======================================
+   CERTIFICATE / DOCUMENT VIEWER MODAL
+====================================== */
 
+
+
+ 
+  
+
+// let currentDocPages = [];
+// let currentDocIndex = 0;
+// let currentZoom = 1;
+
+// function openDocModal(title, pagesArray) {
+//   const modal = document.getElementById('docViewerModal');
+//   const modalTitle = document.getElementById('modalDocTitle');
+//   const downloadBtn = document.getElementById('modalDownloadBtn');
+
+//   if (!modal) return;
+
+//   currentDocPages = pagesArray;
+//   currentDocIndex = 0;
+//   currentZoom = 1;
+
+//   modalTitle.innerText = title;
+//   downloadBtn.setAttribute('href', pagesArray[0]);
+
+//   renderThumbnails();
+//   updateModalView();
+
+//   modal.classList.add('active');
+//   document.body.style.overflow = 'hidden';
+// }
+
+// function closeDocModal() {
+//   const modal = document.getElementById('docViewerModal');
+//   if (!modal) return;
+//   modal.classList.remove('active');
+//   document.body.style.overflow = '';
+// }
+
+// function renderThumbnails() {
+//   const thumbsContainer = document.getElementById('modalThumbnailsList');
+//   const pageCounter = document.getElementById('modalPageCounter');
+
+//   thumbsContainer.innerHTML = '';
+//   pageCounter.innerText = `${currentDocIndex + 1} / ${currentDocPages.length}`;
+
+//   currentDocPages.forEach((imgSrc, idx) => {
+//     const thumb = document.createElement('div');
+//     thumb.className = `thumb-item ${idx === currentDocIndex ? 'active' : ''}`;
+//     thumb.onclick = () => selectDocPage(idx);
+//     thumb.innerHTML = `
+//       <img src="${imgSrc}" alt="Page ${idx + 1}">
+//     `;
+//     thumbsContainer.appendChild(thumb);
+//   });
+// }
+
+// function selectDocPage(index) {
+//   currentDocIndex = index;
+//   renderThumbnails();
+//   updateModalView();
+// }
+
+// function updateModalView() {
+//   const modalImg = document.getElementById('modalMainImage');
+//   modalImg.src = currentDocPages[currentDocIndex];
+//   resetDocZoom();
+// }
+
+// function zoomDoc(amount) {
+//   const modalImg = document.getElementById('modalMainImage');
+//   currentZoom = Math.min(Math.max(0.5, currentZoom + amount), 2.5);
+//   modalImg.style.transform = `scale(${currentZoom})`;
+// }
+
+// function resetDocZoom() {
+//   const modalImg = document.getElementById('modalMainImage');
+//   currentZoom = 1;
+//   modalImg.style.transform = `scale(1)`;
+// }
+
+// // Close Modal on clicking outside the container
+// document.addEventListener('DOMContentLoaded', () => {
+//   const modal = document.getElementById('docViewerModal');
+//   if (modal) {
+//     modal.addEventListener('click', (e) => {
+//       if (e.target === modal) {
+//         closeDocModal();
+//       }
+//     });
+//   }
+// });
 // ending point
 });
