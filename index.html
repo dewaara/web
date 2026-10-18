@@ -115,81 +115,6 @@ function openCertificate(file,title){
     }
   });
 </script>
-<!-- 
-<script>
-  // Watch Demo Trigger
-document.addEventListener("DOMContentLoaded", function () {
-const playDemoBtn = document.getElementById('playDemoBtn');
-const videoModal = document.getElementById('videoModal');
-const closeVideoBtn = document.getElementById('closeVideoBtn');
-const demoVideo = document.getElementById('demoVideo');
-
-if(!playDemoBtn || !videoModal || !closeVideoBtn || !demoVideo){
-    console.error("video modal element not found!");
-    return;
-}
-
-let lastFocusedElement = null;
-function openVideoModal(){
-    lastFocusedElement = document.activeElement;
-    videoModal.classList.add("is-open");
-    videoModal.setAttribute("aria-hidden",false);
-    document.body.style.overflow = "hidden";
-    demoVideo.muted = false;
-    demoVideo.volume = 1;
-    const playPromise = demoVideo.play();
-    if(playPromise !== undefined){
-        playPromise.catch(function(error){
-            console.warn("video playback could not start.",error);
-        });
-    }
-    closeVideoBtn.focus();
-}
-function closeVideoModal(){
-    if(!videoModal.classList.contains("is-open")){
-        return;
-    }
-    demoVideo.onpause();
-    demoVideo.currentTime = 0;
-    videoModal.classList.remove("is-open");
-    videoModal.setAttribute("aria-hidden","true");
-    document.body.style.overflow = "";
-    if(lastFocusedElement && typeof lastFocusedElement.focus === "function"){
-        lastFocusedElement.focus();
-    }
-}
-
-playDemoBtn.addEventListener("click", openVideoModal);
-closeVideoBtn.addEventListener("click",function (event){
-    event.preventDefault();
-    event.stopPropagation();
-    closeVideoModal();
-});
-
-videoModal.addEventListener("click", function (event) {
-        if (event.target === videoModal){
-            closeVideoModal();
-        }
-    });
-document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape" && videoModal.classList.contains("is-open")){
-        closeVideoModal();
-    }
-});  
-
-demoVideo.addEventListener("ended",function(){
-    demoVideo.currentTime = 0;
-});
-
-// floating play video
-const floatPlayDemoBtn = document.getElementById('floatPlayDemoBtn');
-if (floatPlayDemoBtn){
-    floatPlayDemoBtn.addEventListener("click", openVideoModal);
-}
-
-});
-</script> -->
-
 
 <body>
 
@@ -428,22 +353,18 @@ if (floatPlayDemoBtn){
 
 <!-- end -->
  <!-- ==========================================
-CERTIFICATES & DOCUMENTS SECTION
+CERTIFICATES & DOCUMENTS SECTION  
 ========================================== -->
 <section id="certificates" class="cert-section">
   <div class="cert-container">
-    
-    <!-- Left Featured Certificate Preview (Mobile/Tablet par order adjust hoga CSS se) -->
     <div class="cert-featured-left">
       <div class="featured-doc-frame">
         <img id="featuredMainImg" src="img/copyright-cert.png" alt="Copyright Certificate" class="featured-doc-img">
       </div>
     </div>
-
-    <!-- Right Side Content & Document Cards -->
     <div class="cert-content-right">
       <div class="cert-header">
-        <h2 class="cert-title">Certificates & Documents</h2>
+        <h2 class="cert-title">Certificates <span class="highlight">& </span>Documents</h2>
         <p class="cert-description">
           Explore SalonApp's official achievements, certifications, and project documents that showcase our innovation, technical excellence, and commitment to delivering a secure, reliable, and user-friendly salon booking platform.
         </p>
@@ -460,7 +381,7 @@ CERTIFICATES & DOCUMENTS SECTION
             <div class="doc-overlay">
               <button class="view-doc-btn">
                 <i class="fas fa-eye"></i>
-                <span>View Document</span>
+                <span>View</span>
               </button>
             </div>
           </div>
@@ -478,7 +399,7 @@ CERTIFICATES & DOCUMENTS SECTION
             <div class="doc-overlay">
               <button class="view-doc-btn" type="button">
                 <i class="fas fa-eye"></i>
-                <span>View Document</span>
+                <span>View</span>
               </button>
             </div>
           </div>
@@ -496,7 +417,7 @@ CERTIFICATES & DOCUMENTS SECTION
             <div class="doc-overlay">
               <button class="view-doc-btn" type="button">
                 <i class="fas fa-eye"></i>
-                <span>View Document</span>
+                <span>View</span>
               </button>
             </div>
           </div>
@@ -514,7 +435,7 @@ CERTIFICATES & DOCUMENTS SECTION
             <div class="doc-overlay">
               <button class="view-doc-btn" type="button">
                 <i class="fas fa-eye"></i>
-                <span>View Document</span>
+                <span>View</span>
               </button>
             </div>
           </div>
@@ -561,10 +482,6 @@ CERTIFICATES & DOCUMENTS SECTION
 
   </div>
 </section>
-
-<!-- ==========================================
-DOCUMENT VIEWER DIALOG / MODAL (Pop-up)
-========================================== -->
 
  <!-- end.. -->
 

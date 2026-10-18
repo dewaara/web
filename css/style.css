@@ -856,6 +856,8 @@ CERTIFICATES & DOCUMENTS SECTION STYLES
   margin-bottom: 0.5rem;
 }
 
+.cert-title .highlight { color: #4a154b; }
+
 .cert-description {
   font-size: 0.9375rem;
   color: var(--text-secondary);
@@ -1437,7 +1439,9 @@ MOBILE RESPONSIVE (max-width: 640px)
 ========================================== */
 @media screen and (max-width: 640px) {
   .btn-admin span, .header-download span, .lang-selector i:last-child { display: none; }
-  .header-download { padding: 0.5rem; }
+  .header-download { 
+    display: none;
+    padding: 0.5rem; }
   #navMenu { width: 280px; right: -300px; }
   #navMenu a { padding: 0.75rem 0.625rem; font-size: 0.9375rem; }
   .logo-text { font-size: 1.125rem; }
